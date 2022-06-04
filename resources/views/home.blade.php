@@ -7,7 +7,7 @@
         <img src="/assets/profile-picture.jpg" class="rounded-circle">
 </div>
     <div class="col-9 p-5 ">
-    <div><h1>kayaa.kerem</h1></div>
+    <div><h1>{{$user->username}}</h1></div>
 <div class="d-flex">
     <div class="pe-5" ><strong>2</strong> posts</div>
     <div class="pe-5"><strong>1,046</strong> followers</div>
