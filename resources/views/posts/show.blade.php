@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <img src="/storage/{{$post->user->profile->image}}" class="w-100 rounded-circle" style="max-width: 40px;">
+                            <img src="{{$post->user->profile->profileImage()}}" class="w-100 rounded-circle" style="max-width: 40px;">
                         <span class="card-title px-3 "><strong> <a href="/profile/{{$post->user->username}}" 
                             style="text-decoration: none;color:inherit;">
                             {{$post->user->username}} 
