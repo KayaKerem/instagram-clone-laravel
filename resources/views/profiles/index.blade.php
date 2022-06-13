@@ -9,27 +9,28 @@
     <div class="col-9 p-5 ">
     <div class="d-flex justify-content-between align-items-baseline">
         <h1>{{$user->username}}</h1>
-        <a href="#" style="text-decoration: none;">Add New Post</a>
+        <a href="/p/create" style="text-decoration: none;">Add New Post</a>
     </div>
 <div class="d-flex">
-    <div class="pe-5" ><strong>2</strong> posts</div>
+    <div class="pe-5" ><strong>{{$user->posts->count()}}</strong> posts</div>
     <div class="pe-5"><strong>1,046</strong> followers</div>
     <div class="pe-5"><strong>762</strong> following</div>
 </div>
 <div class="pt-4">
-    <strong>{{$user->profile->title}}</strong>
+    <strong>{{$user->profile->title??null}}</strong>
 </div>
-<div class="pt-1">{{$user->profile->description}}</div>
-<div><a href="" style="text-decoration: none;">{{ $user->profile->url  }}</a></div>    
+<div class="pt-1">{{$user->profile->description??null}}</div>
+<div><a href="" style="text-decoration: none;">{{ $user->profile->url??null  }}</a></div>    
    </div>
 </div>
 <div class="row pt-5">
-    <div class="col-4 d-flex">
-        <img src="/assets/post1.png" class="w-100 pe-3">
-        <img src="/assets/post1.png" class="w-100 pe-3">
-        <img src="/assets/post1.png" class="w-100 pe-3">
+    @foreach($user->posts as $post)
+    <div class="col-4 d-flex pb-4">
+        <img src="/storage/{{$post->image}}" class="w-100 pe-3">
+       
 
     </div>
+@endforeach
 </div>
 </div>
 @endsection
