@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
+use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class UserTest extends TestCase
 {
     /**
      * A basic test example.
@@ -16,6 +17,11 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
+        $response->assertStatus(200);
+    }
+    public function user_test(){
+        $user = Factory(User::class)->create();
+        $response = $this->actingAs($user)->get('/profile'.$user->id);
         $response->assertStatus(200);
     }
 }
