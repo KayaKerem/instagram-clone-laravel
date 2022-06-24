@@ -51,9 +51,9 @@ class ProfilePolicy
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Profile $profile)
+    public function update(User $currentUser, User $user)
     {
-        return $user->id ==$profile->user_id;
+        return $currentUser->id ==$user->id;
     }
 
     /**

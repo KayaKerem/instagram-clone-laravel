@@ -13,15 +13,25 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * @var mixed
+     */
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'username',
         'password',
+        'title',
+        'description',
+        'url',
+        'image',
+
     ];
 
     /**
@@ -42,11 +52,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * @var mixed
+     */
+
+
     protected static function boot(){
         parent::boot();
         static::created(
             function ($user){
-                $user->profile()->create(["title"=>$user->username,]);
+                $user->create(["title"=>$user->username,]);
             }
         );
     }
@@ -57,7 +72,7 @@ class User extends Authenticatable
 
     }
 
-    public function profile(){
-        return $this->hasOne(Profile::class);
+    public function profileImage(){
+        return ($this->image) ? '/storage/' . $this->image : 'https://instastatistics.com/images/default_avatar.jpg';
     }
 }
